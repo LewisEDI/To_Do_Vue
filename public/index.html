@@ -12,7 +12,7 @@
 <body>
 	<div id="app">
 		<ul>
-			<li v-for="(todo, index) in todos" v-bind:class="todos.isComplete? 'complete' : 'not-complete' ">
+			<li v-for="(todo, index) in todos" v-bind:class="todo.isHighPri ? 'high' : 'low' ">
 			<span>{{todo.task}}</span>
 			<span v-if="todo.isComplete">Complete!</span>
 			<button v-if="!todo.isComplete" v-on:click="completeTask(index)">Complete Task</button>
@@ -21,7 +21,12 @@
 		<form v-on:submit.prevent="saveNewTask">
 			<label for="new-task">Add a new task</label>
 			<input id="new-task" type="text" v-model="newTask">
+      <input type="radio" id="high" value=true v-model.boolean="priority">
+      <label for="high">High</label>
+      <input type="radio" id="low" value=false v-model.boolean="priority">
+      <label for="low">Low</label>
 			<input type="submit" value="save new task">
+
 		</form>
 	</div>
 </body>

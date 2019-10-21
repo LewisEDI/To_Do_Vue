@@ -5,18 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
 		el: "#app",
 		data: {
 			todos: [
-				{task: "Buy shopping", isComplete: false},
-				{task: "Clean bathroom", isComplete: false},
-				{task: "Car's MOT", isComplete: false}
+				{task: "Buy shopping", isComplete: false, isHighPri: false},
+				{task: "Clean bathroom", isComplete: false, isHighPri: true},
+				{task: "Car's MOT", isComplete: false, isHighPri: true}
 
 			],
-			newTask: ""
+			newTask: "",
+      priority: false
 		},
 		methods: {
 				saveNewTask: function() {
 					this.todos.push({
 						task: this.newTask,
-						isComplete: false
+						isComplete: false,
+            isHighPri: this.priority
 					});
 					this.newTask = "";
 
